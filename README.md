@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-npm install vue-component-library
+npm install dhao-vue-library
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install vue-component-library
 ```javascript
 import { createApp } from 'vue';
 import App from './App.vue';
-import VueComponentLibrary from 'vue-component-library';
+import VueComponentLibrary from 'dhao-vue-library';
 
 const app = createApp(App);
 app.use(VueComponentLibrary);
@@ -28,7 +28,7 @@ app.mount('#app');
 </template>
 
 <script>
-import { VButton } from 'vue-component-library';
+import { VButton } from 'dhao-vue-library';
 
 export default {
   components: { VButton },

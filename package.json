@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "files": ["lib"],
-  "main": "./lib/vue-component-library.umd.js",
-  "module": "./lib/vue-component-library.es.js",
+  "main": "./lib/dhao-vue-library.umd.js",
+  "module": "./lib/dhao-vue-library.es.js",
   "exports": {
     ".": {
-      "import": "./lib/vue-component-library.es.js",
-      "require": "./lib/vue-component-library.umd.js"
+      "import": "./lib/dhao-vue-library.es.js",
+      "require": "./lib/dhao-vue-library.umd.js"
     },
     "./styles.css": "./lib/style.css"
   },
