@@ -1,21 +1,17 @@
-/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { format, resolve } from 'path';
+import { resolve } from 'path';
+import { libInjectCss } from 'vite-plugin-lib-inject-css'; // 新增插件
 
-// https://vite.dev/config/
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
-
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    libInjectCss() // 自动注入 CSS 到 JS
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
-      name: 'VueComponentLibrary',
+      name: 'DhaoVueLibrary',
       fileName: format => `dhao-vue-library.${format}.js`
     },
     rollupOptions: {
@@ -25,31 +21,10 @@ export default defineConfig({
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
           vue: 'Vue'
-        }
-      }
-    }
-  },
-  test: {
-    projects: [{
-      extends: true,
-      plugins: [
-      // The plugin will run tests for the stories defined in your Storybook config
-      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      storybookTest({
-        configDir: path.join(dirname, '.storybook')
-      })],
-      test: {
-        name: 'storybook',
-        browser: {
-          enabled: true,
-          headless: true,
-          provider: 'playwright',
-          instances: [{
-            browser: 'chromium'
-          }]
         },
-        setupFiles: ['.storybook/vitest.setup.ts']
+        assetFileNames: 'style.css' // 所有 CSS 合并为一个文件
       }
-    }]
+    },
+    cssCodeSplit: false // 禁用 CSS 拆分（确保单文件）
   }
 });

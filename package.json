@@ -1,16 +1,18 @@
 {
   "name": "dhao-vue-library",
-  "version": "0.0.0",
+  "version": "1.1.5",
   "type": "module",
-  "files": ["lib"],
-  "main": "./lib/dhao-vue-library.umd.js",
-  "module": "./lib/dhao-vue-library.es.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/dhao-vue-library.umd.js",
+  "module": "./dist/dhao-vue-library.es.js",
   "exports": {
     ".": {
-      "import": "./lib/dhao-vue-library.es.js",
-      "require": "./lib/dhao-vue-library.umd.js"
+      "import": "./dist/dhao-vue-library.es.js",
+      "require": "./dist/dhao-vue-library.umd.js"
     },
-    "./styles.css": "./lib/style.css"
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",
@@ -20,6 +22,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "vite-plugin-lib-inject-css": "^2.2.2",
     "vue": "^3.5.17"
   },
   "devDependencies": {
@@ -31,13 +34,13 @@
     "@storybook/vue3-vite": "^9.0.17",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "playwright": "^1.54.1",
     "storybook": "^9.0.17",
     "typescript": "^5.8.3",
     "vite": "^7.0.4",
-    "vue-tsc": "^3.0.3",
     "vitest": "^3.2.4",
-    "@vitest/browser": "^3.2.4",
-    "playwright": "^1.54.1",
-    "@vitest/coverage-v8": "^3.2.4"
+    "vue-tsc": "^3.0.3"
   }
 }
