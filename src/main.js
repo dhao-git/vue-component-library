@@ -1,10 +1,14 @@
 import { createApp } from 'vue'
-import './style.css'
+// import './style.css'
 import App from './App.vue'
-import VueComponentlibrary from './index'
+import * as VueComponentlibrary from './index'
+
+import { utils } from './index';
 
 console.log(VueComponentlibrary);
+console.log(utils);
+
 
 const app = createApp(App);
-app.use(VueComponentlibrary)
+app.use(VueComponentlibrary.default)
 app.mount('#app')
